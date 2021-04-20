@@ -1,3 +1,7 @@
-Noorderbreedte;52
-blaffen;bellen
-gekleurd;bunt
+Setting;Screen 1;Screen 2
+latitude;52.00630;
+longitude;4.9779;
+startAngle;300;
+endAngle;310;
+startAltitude;-14;
+endAltitude;10;
