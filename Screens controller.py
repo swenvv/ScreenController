@@ -6,28 +6,16 @@ from pyephem_sunpath.sunpath import sunpos
 
 
 # Read CSV file with settings
-settings = {}
 
-with open("Settings.csv") as csvDataFile:
-    csvReader = csv.reader(csvDataFile ,delimiter=';')
-    for row in csvReader:
-        settings [row[0]] = row[1]
- 
+settings = []
 
-# Calculate Azimuth and Altitude of the sun
-
-theTime = datetime.now() 
-theUtcTime = datetime.utcnow()
-
-lat = settings["latitude"]
-lon = settings["longitude"]
-tz = int(theTime.hour - theUtcTime.hour)
-
-altitude, azimuth = sunpos(theTime, lat, lon, tz, dst=False)
-print("altitude: ",altitude)
-print("Azimuth: ", azimuth)
+with open("Settings.csv", 'r') as file:
+    csv_file = csv.DictReader(file,delimiter=';')
+    for row in csv_file:
+        settings.append(row)
 
 
+# Class
 class ScreenController:
     def __init__(self, startAngle, endAngle, startAltitude, endAltitude):
         self.startAngle = startAngle
@@ -50,11 +38,29 @@ class ScreenController:
             hit = 0
         return hit
 
-scrFront = ScreenController(float(settings["startAngle"]), 
-                            float(settings["endAngle"]),
-                            float(settings["startAltitude"]), 
-                            float(settings["endAltitude"]))
 
-print ("In reach of the sun: ", scrFront.ScreenInSunInReach())
+testArray = 1
+
+# Calculate Azimuth and Altitude of the sun
+
+theTime = datetime.now() 
+theUtcTime = datetime.utcnow()
+
+lat = settings[testArray]["latitude"]
+lon = settings[testArray]["longitude"]
+tz = int(theTime.hour - theUtcTime.hour)
+
+altitude, azimuth = sunpos(theTime, lat, lon, tz, dst=False)
+print("altitude: ",altitude)
+print("Azimuth: ", azimuth)
+
+
+
+scrFront = ScreenController(float(settings[testArray]["startAngle"]), 
+                            float(settings[testArray]["endAngle"]),
+                            float(settings[testArray]["startAltitude"]), 
+                            float(settings[testArray]["endAltitude"]))
+
+print (settings[testArray]["Name"], " In reach of the sun: ", scrFront.ScreenInSunInReach())
 
 
