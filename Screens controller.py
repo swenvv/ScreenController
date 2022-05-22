@@ -3,6 +3,7 @@ import os
 import time
 from datetime import datetime, timedelta, timezone, tzinfo
 from pyephem_sunpath.sunpath import sunpos
+#import DomoticzEvents as DE
 
 
 # Read CSV file with settings
@@ -39,7 +40,7 @@ class ScreenController:
         return hit
 
 
-testArray = 1
+testArray = 2
 
 # Calculate Azimuth and Altitude of the sun
 

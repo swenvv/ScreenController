@@ -1,3 +1,4 @@
 Name;latitude;longitude;startAngle;endAngle;startAltitude;endAltitude
-Screen 1;5.200.630;49.779;300;310;-14;10
-Screen 2;5.200.630;49.779;70;100;0;90
+Screen 1;52.0092;4.98221;30;180;0;90
+Screen 2;52.0092;4.98221;70;100;0;90
+Screen thuis voor;52.0092;4.98221;200;300;13;90
